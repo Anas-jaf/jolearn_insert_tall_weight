@@ -10,12 +10,20 @@ import time
 
 driver=webdriver.Firefox()
 
+def go_to_create_page():
+    driver.get("https://jolearn.jo/index.php?r=EFitness/FitnessWeightHeightMesaures/create")
+    
+def get_school_grades():
+    driver.get("https://jolearn.jo/index.php?r=EFitness/FitnessWeightHeightMesaures/create") 
+    DROPDOWN = (By.ID, "FitnessSchoolSort_ViewCodeNameWHMeasures_GradeID")
+    grades = wait_for_element(driver, DROPDOWN)
+    grades = grades
+
 def login_to_jolearn(username, password, driver):
     driver.get("https://jolearn.jo/") 
     login = wait_for_element(driver, (By.CSS_SELECTOR, ".btn.btn-lg"))
     login_url = login.get_attribute('href') 
     login_to_microsoft(username , password , login_url , driver)
-
 
 def login_to_microsoft (username, password, url ,driver):
     EMAILFIELD = (By.ID, "i0116")
@@ -53,3 +61,4 @@ def click_element( element):
 if __name__ == "__main__":
     login_to_jolearn('9841033839@jolearn.jo' , 'Ahmad33839' , driver)
     
+    print('finished')
