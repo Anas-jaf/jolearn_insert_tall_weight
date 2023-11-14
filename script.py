@@ -10,6 +10,13 @@ import time
 
 driver=webdriver.Firefox()
 
+def login_to_jolearn(username, password, driver):
+    driver.get("https://jolearn.jo/") 
+    login = wait_for_element(driver, (By.CSS_SELECTOR, ".btn.btn-lg"))
+    login_url = login.get_attribute('href') 
+    login_to_microsoft(username , password , login_url , driver)
+
+
 def login_to_microsoft (username, password, url ,driver):
     EMAILFIELD = (By.ID, "i0116")
     PASSWORDFIELD = (By.ID, "i0118")
@@ -44,9 +51,5 @@ def click_element( element):
     # return element
 
 if __name__ == "__main__":
-        
-    driver.get("https://jolearn.jo/") 
-    login = wait_for_element(driver, (By.CSS_SELECTOR, ".btn.btn-lg"))
-    login_url = login.get_attribute('href') 
-    login_to_microsoft('9841033839@jolearn.jo' , 'Ahmad33839' , login_url , driver)
+    login_to_jolearn('9841033839@jolearn.jo' , 'Ahmad33839' , driver)
     
